@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap-icons-1.10.3/bootstrap-icons.css" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <title>
+        <%=title%>
+    </title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <%-include("navbar")%>
+            <form action="/addInventory" method="POST" enctype="multipart/form-data">
+                <div class="container shadow border p-5 mt-5">
+                    <div class="row m-3">
+                        <div class="col">
+                            <label for="product name" class="form-label">Product Name</label>
+                            <input type="text" name="productName" id="producName" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="product price" class="form-label">Product Price</label>
+                            <input type="text" name="productPrice" id="producPrice" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="product price" class="form-label">Product Category</label>
+                            <select name="category" class="form-select">
+                                <option value="">choose:</option>
+                                <option value="cat_1">cat 1</option>
+                                <option value="cat_2">cat 2</option>
+                                <option value="cat_3">cat 3</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" name="quantity" id="quantity" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-8">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" name="description" id="description" class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <div class="col">
+                                <label for="product price" class="form-label">Pet Type</label>
+                                <select name="petType" class="form-select">
+                                    <option value="">choose:</option>
+                                    <option value="cats">cats</option>
+                                    <option value="dogs">dogs</option>
+                                    <option value="rabbits">rabbits</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <label for="image" class="form-label">Product Image</label>
+                            <input type="file" name="image" id="image" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row m-3 justify-content-center">
+                        <div class="col-1">
+                            <button type="submit" class="btn btn-outline-dark">
+                                add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </form>
+    </body>
+
+    </html>
+</body>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+</html>

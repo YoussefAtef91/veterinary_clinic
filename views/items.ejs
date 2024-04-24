@@ -1,0 +1,62 @@
+<%-include('header')%>
+    <center>
+        <div class="container border shadow m-5 p-5">
+            <div class="row">
+                <div class="col-3">
+                    <img src="/images/pet-accessories-1.jpg" style="width: 100%">
+                </div>
+                <div class="col-9">
+                    <div class="row justify-content-start">
+                        <div class="col-2">Product Name:</div>
+                        <div class="col-2">
+                            <%=item['productName']%>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-2">Description:</div>
+                        <div class="col-3">
+                            <%=item['description']%>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-2">Product Price:</div>
+                        <div class="col-2">
+                            <%=item['productPrice']%>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-2">Category:</div>
+                        <div class="col-2">
+                            <%=item['category']%>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-2">Pet Type:</div>
+                        <div class="col-2">
+                            <%=item['petType']%>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start ms-3">
+                        <div class="col-1">Quantity:</div>
+                        <div class="col-1"><button style="border: none; background-color: transparent;" id="plus"><i
+                                    class="bi bi-plus-square"></i></button></div>
+                        <div class="col-2"><input type="number" name="qty" id="qty" value="1" class="form-control">
+                        </div>
+                        <div class="col-1"><button style="border: none; background-color: transparent;" id="minus"><i
+                                    class="bi bi-dash-square"></i></button></div>
+                    </div>
+                    <div class="row justify-content-start ms-2">
+                        <input type="hidden" name="stock" id="stock" value="<%=item['quantity']%>">
+                        <div class="col-2">
+                            <div id="availability" style="color: green;">Available</div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start mt-5">
+
+                        <div class="col-2"><button class="btn btn-outline-info">Buy</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+    <%-include('footer')%>
