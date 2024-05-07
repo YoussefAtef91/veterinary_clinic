@@ -1,0 +1,93 @@
+<%-include ('header')%>
+    <div class="container border mt-5 p-5">
+        <center>
+            <div class="display-4">Make an appointment</div>
+        </center>
+        <div class="p-4 card d-flex" style="background-color: transparent; border: none;">
+            <%if (messages) {%>
+                <%for(let message of messages) {%>
+                    <div class="alert alert-danger" role="alert">
+                        <h5>
+                            <%=message%>
+                        </h5>
+                    </div>
+                    <%}%>
+                        <%}%>
+                            <form action="/appointment" , method="POST">
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <label for="name" class="form-label">Pet Name</label>
+                                        <input type="text" name="name" id="name" class="form-control">
+                                    </div>
+                                    <div class="col">
+                                        <label for="Pet Type" class="form-label">Pet Type</label>
+
+                                        <select name="petType" id="petType" class="form-select">
+                                            <option value="">choose...</option>
+                                            <option value="cat">cat</option>
+                                            <option value="dog">dog</option>
+                                            <option value="hamster">hamster</option>
+                                            <option value="rabbit">rabbit</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label for="pet age" class="form-label">Pet Age</label>
+                                        <input type="number" name="age" id="age" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <div class="col">
+                                            <label for="reason" class="form-label">Reason for visit</label>
+                                            <input type="text" name="reason" id="reason" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <div class="col">
+                                            <label for="history" class="form-label">Medical History</label>
+                                            <input type="text" name="history" id="history" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <label for="veterinarian" class="form-label">Preffered Veterinarian</label>
+                                        <select name="veterinarian" id="veterinarian" class="form-select">
+                                            <option value="">choose...</option>
+                                            <option value="drYoussef">Dr. Youssef</option>
+                                            <option value="drMohammed">Dr. Mohamed</option>
+                                            <option value="drAli">Dr. Ali</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <label for="date" class="form-label">Date</label>
+                                        <input type="date" name="date" id="date" class="form-control">
+                                    </div>
+                                    <div class="col">
+                                        <label for="timr" class="form-label">Time</label>
+                                        <select name="time" id="time" class="form-select">
+                                            <option value="">choose...</option>
+                                            <option value="6">6 pm</option>
+                                            <option value="7">7 pm</option>
+                                            <option value="8">8 pm</option>
+                                            <option value="9">9 pm</option>
+                                            <option value="10">10 pm</option>
+                                            <option value="11">11 pm</option>
+                                            <option value="12">12 am</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-3">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-outline-info">submit</button>
+                                    </div>
+                                </div>
+        </div>
+        </form>
+    </div>
+    <%-include ('footer')%>

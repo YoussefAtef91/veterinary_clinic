@@ -1,0 +1,35 @@
+<%-include ('header')%>
+    <center>
+        <div class="display-5 mt-5">My Appointments</div>
+    </center>
+    <%for (let i=0;i<appointments.length;i++){%>
+        <div class="container-fluid border shadow mt-5" style="height: 160px; width: 90%;">
+            <div class="row mt-3">
+                <div class="col">
+                    <div class="text-muted" style="font-size: 20px;">You have an appointment on
+                        <%=appointments[i].date.toISOString().split('T')[0]%> at <%=appointments[i].time%> pm
+                                with
+                                <%=appointments[i].veterinarian%>
+                    </div>
+                </div>
+                <div class="row mt-1 justify-content-start">
+                    <div class="col-1">pet name: <%=appointments[i].petName%>
+                    </div>
+                    <div class="col-1">pet type: <%=appointments[i].petType%>
+                    </div>
+                    <div class="col-1">pet age: <%=appointments[i].petAge%>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col">reason: <%=appointments[i].reason%>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col">history: <%=appointments[i].history%>
+                </div>
+            </div>
+        </div>
+        <%}%>
+
+            <%-include ('footer')%>

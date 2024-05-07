@@ -1,0 +1,111 @@
+<%-include ('header')%>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <div class="display-5">Filter</div>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                        id="menu">
+                        <form action="/search" method="POST">
+                            <hr style="width: 250px;">
+                            <label class="form-label">Search</label>
+                            <input type="text" class="form-control" name="search">
+                            <hr style="width: 250px;">
+                            <label class="form-label">Category</label>
+                            <li>
+                                <input type="radio" class="form-check-input" name="cat_all">
+                                <label class="form-check-label">All</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="form-check-input" name="cat_1">
+                                <label class="form-check-label">cat 1</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="form-check-input" name="cat_2">
+                                <label class="form-check-label">cat 2</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="form-check-input" name="cat_3">
+                                <label class="form-check-label">cat 3</label>
+                            </li>
+                            <hr style="width: 250px;">
+                            <li>
+                                <label for="customRange3" class="form-label">Price range</label>
+                                <input type="range" class="form-range" min="0" max="500" step="100" id="customRange3"
+                                    name="price">
+                                <div class="row justify-content-between me-3">
+                                    <div class="col-1">0</div>
+                                    <div class="col-1">100</div>
+                                    <div class="col-1">200</div>
+                                    <div class="col-1">300</div>
+                                    <div class="col-1">400</div>
+                                    <div class="col-1">500</div>
+                                </div>
+                            </li>
+                            <hr style="width: 250px;">
+                            <label class="form-label">Specific To:</label>
+                            <li>
+                                <input type="radio" class="form-check-input" name="type_all">
+                                <label class="form-check-label">All</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="form-check-input" name="type_cats">
+                                <label class="form-check-label">cats</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="form-check-input" name="type_dogs">
+                                <label class="form-check-label">dogs</label>
+                            </li>
+                            <li>
+                                <input type="radio" class="form-check-input" name="type_rabbits">
+                                <label class="form-check-label">rabbits</label>
+                            </li>
+                            <hr style="width: 250px;">
+                            <button class="btn btn-outline-light">Search</button>
+                        </form>
+                    </ul>
+                    <hr>
+                    <div class="dropdown pb-4">
+                    </div>
+                </div>
+            </div>
+            <div class="col py-3">
+                <div class="container mt-5">
+                    <% for (let i=0; i <inventory.length; i++) { %>
+                        <% if (i % 3===0) { %>
+                            <div class="row">
+                                <% } %>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card" style="width: 100%;">
+                                            <img src="/images/inventory_images/<%=inventory[i].image%>"
+                                                class="card-img-top" alt="product image"
+                                                style="width: 100%; height: 400px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <%=inventory[i].productName%>
+                                                </h5>
+                                                <p class="card-text">
+                                                    <%=inventory[i].description%>
+                                                </p>
+
+                                                <p class="text-muted">
+                                                    <%=inventory[i].productPrice%><sup>$</sup>
+                                                </p>
+                                                <a href="/items?id=<%=inventory[i]._id%>"
+                                                    class="btn btn-primary">Buy</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% if ((i + 1) % 3===0 || i===20) { %>
+
+                            </div>
+                            <% } %>
+                                <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <%-include ('footer')%>
