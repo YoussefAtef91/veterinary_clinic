@@ -1,0 +1,63 @@
+<%-include('header')%>
+    <div class="container-fluid border w-75 my-4 p-5">
+        <center>
+            <h1>Add a post</h1>
+        </center>
+        <form action="/post" method="POST" enctype="multipart/form-data">
+            <div class="row my-5">
+
+                <div class="col">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="petName">
+                </div>
+                <div class="col">
+                    <label class="form-label">pet type</label>
+                    <select name="petType" class="form-select">
+                        <option value="">select...</option>
+                        <option value="cat">cat</option>
+                        <option value="dog">dog</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label class="form-label">Location</label><input type="text" name="location" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">Status</label>
+                    <select name="status" class="form-select">
+                        <option value="">select...</option>
+                        <option value="found">Found</option>
+                        <option value="missing">Missing</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col-3">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-control" name="date">
+                </div>
+                <div class="col">
+                    <label class="form-label">Comment</label>
+                    <input type="text" class="form-control" name="comment">
+                </div>
+
+            </div>
+            <div class="row my-5 justify-content-center">
+                <div class="col"><label class="form-label">Email</label>
+                    <input type="email" name="contactEmail" id="email" class="form-control">
+                </div>
+                <div class="col"><label class="form-label">Contact Number</label>
+                    <input type="text" name="contactNumber" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">Image</label><input type="file" name="image" id="image"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-1">
+                    <button type="submit" class="btn btn-outline-dark">post</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <%-include('footer')%>

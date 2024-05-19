@@ -10,7 +10,7 @@ const inventorySchema = new Schema(
       unique: true,
     },
     productPrice: {
-      type: String,
+      type: Number,
       required: true,
     },
     category: {
@@ -18,7 +18,7 @@ const inventorySchema = new Schema(
       required: true,
     },
     quantity: {
-      type: String,
+      type: Number,
       required: true,
     },
     description: {
@@ -30,8 +30,7 @@ const inventorySchema = new Schema(
       required: true,
     },
     image: {
-      data: Buffer,
-      contentType: String,
+      type: String,
     },
   },
   { timestamps: true, versionKey: false }

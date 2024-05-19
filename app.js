@@ -27,7 +27,16 @@ const {
   addInventory,
   search,
   items,
+  transaction,
 } = require("./controllers/shop_controllers.js");
+
+const {
+  lost_page,
+  found_page,
+  post_page,
+  post,
+  contact,
+} = require("./controllers/lostandfound_controller.js");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -48,9 +57,21 @@ app.use(
   })
 );
 app.use(flash());
-const storage = multer.memoryStorage(); // Store files in memory as buffers
+
+//Multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/images/inventory_images");
+  },
+  filename: (req, file, cb) => {
+    const filename = Date.now() + path.extname(file.originalname);
+    console.log(filename);
+    cb(null, filename);
+  },
+});
 const upload = multer({ storage: storage });
-app.use(upload.single("image"));
+
+//Database connection
 mongoose
   .connect("mongodb://127.0.0.1:27017/clinic")
   .then(() => {
@@ -58,21 +79,34 @@ mongoose
   })
   .catch((err) => console.log(err));
 
+//Get requests
 app.get("/", Auth, home);
 app.get("/login", Auth, login_page);
 app.get("/register", Auth, register_page);
-app.get("/appointment", appointment_page);
-app.get("/showAppointments", showAppointments);
-app.get("/shop", shop_page);
-app.get("/addInventory", addInventory_page);
-app.get("/items", items);
+app.get("/appointment", Auth, appointment_page);
+app.get("/showAppointments", Auth, showAppointments);
+app.get("/shop", Auth, shop_page);
+app.get("/addInventory", Auth, addInventory_page);
+app.get("/items", Auth, items);
+app.get("/lost", lost_page);
+app.get("/found", found_page);
+app.get("/post", Auth, post_page);
 
-app.post("/login", login);
-app.post("/register", register);
-app.post("/logout", logout);
-app.post("/appointment", appointment);
+//Post requests
+app.post("/login", Auth, login);
+app.post("/register", Auth, register);
+app.post("/logout", Auth, logout);
+app.post("/appointment", Auth, appointment);
 app.post("/addInventory", upload.single("image"), addInventory);
-app.post("/search", search);
+app.post("/search", Auth, search);
+app.post("/transaction", Auth, transaction);
+app.post("/post", upload.single("image"), post);
+app.post("/contact", contact);
+
+const handle404 = (req, res, next) => {
+  res.status(404).render("404", { title: "Page Not Found" });
+};
+app.use(handle404);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}...`);

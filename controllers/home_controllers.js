@@ -63,7 +63,7 @@ const register = async (req, res) => {
       await user.save();
 
       console.log("user signed up successfully...");
-      res.redirect("login_page");
+      res.redirect("login");
     }
   }
 };

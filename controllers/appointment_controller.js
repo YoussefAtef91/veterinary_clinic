@@ -36,7 +36,7 @@ const appointment = async (req, res) => {
 };
 
 const showAppointments = async (req, res) => {
-  const username = req.session.usename;
+  const username = req.session.username;
   const appointments = await Appointment.find({ petOwner: username });
   res.render("showAppointments", { title: "show appointments", appointments });
 };
